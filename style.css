@@ -1,6 +1,7 @@
 ﻿*{
 	margin:0;
 	padding:0;
+	font-family: 'Poppins', sans-serif;
 }
 * {
 	outline: solid 1px black;
@@ -8,20 +9,40 @@
   }
 .header{
 	min-height: 100vh;
-	width: 100%;
-	/*background-image: linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.6)), url(images/ocean.jpg);*/
-	background-position: center;
+	width: 100vw;
+	background-image: linear-gradient(rgba(0, 24, 121, 0.5),rgba(0, 24, 121, 0.5)), url(images/ocean.jpg);
 	background-size: cover;
 	position: relative;
+	background-position: center;
 }
-nav{
+.smaller-header{
+	min-height: 25vh;
+	width: 100vw;
+	background-image: linear-gradient(rgba(0, 24, 121, 0.5),rgba(0, 24, 121, 0.5)), url(images/ocean.jpg);
+	background-size: cover;
+	position: relative;
+	background-position: center;
+}
+
+
+/* HEADER MENU LINKS */
+.header nav{
 	display: flex;
-	padding: 2% 3%;
+	padding: 2% 3% 7%;
+	justify-content: space-between;
+	align-items: center;
+}
+.smaller-header nav{
+	display: flex;
+	padding: 2% 3% 0%;
 	justify-content: space-between;
 	align-items: center;
 }
 nav img{
 	width: 200px;
+}
+nav .fa-solid{
+	display: none;
 }
 .nav-links{
 	flex: 1;
@@ -33,9 +54,10 @@ nav img{
 	display: inline-block;
 	padding: 8px 12px;
 	position: relative;
+	font-weight: bold;
 }
 .nav-links ul li a{
-	color: #000;
+	color: white;
 	text-decoration: none;
 	font-size: 15px;
 }
@@ -43,7 +65,7 @@ nav img{
 	content: '';
 	width: 0%;
 	height: 2px;
-	background-color: #000;
+	background-color: white;
 	display: block;
 	margin: auto;
 	transition: 0.5s;
@@ -51,37 +73,71 @@ nav img{
 .nav-links ul li:hover::after{
 	width: 100%;
 }
+
+
+
+/* INTRODUCTION TEXTBOX */
 .text-box{
-	width: 90%;
-	color: #000;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-items: center;
+	color: white;
 }
 .text-box h1{
 	font-size: 62px;
+	text-align: center;
 }
 .text-box p{
-	padding: 1% 15%;
+	padding: 1% 10% 2%;
 	font-size: 20px;
 	text-align: justify;
 	line-height: 1.5;
 }
-nav .fa-solid{
-	display: none;
+.dive-in-btn{
+	flex: none;
+	display: inline-block;
+	outline: solid 3px white;
+	color: white;
+	font-weight: bold;
+	outline-offset: -1px;
+	font-size: 25px;
+	padding: 1% 2.5%;
+	text-decoration: none;
+	position: relative;
+	cursor: pointer;
+	border-radius: 2px;
+	align-self: center;
 }
+.dive-in-btn:hover{
+	background-color: white;
+	color: black;
+	transition: 0.5s;
+}
+
+
 @media(max-width: 700px) {
 	.text-box h1{
-		padding: 5% 0% 0%;
+		padding: 0% 0% 0%;
 		font-size: 35px;
 	}
 	.text-box p{
-		padding: 2% 10%;
+		padding: 2% 10% 6%;
 		font-size: 12px;
 		text-align: justify;
 		line-height: 1.5;
+	}
+	.dive-in-btn{
+		display: inline-block;
+		outline: solid 1px white;
+		color: white;
+		font-weight: bold;
+		outline-offset: -1px;
+		font-size: 15px;
+		padding: 4% 6%;
+		text-decoration: none;
+		position: relative;
+		cursor: pointer;
 	}
 	.nav-links ul li{
 		display: block;
@@ -89,7 +145,7 @@ nav .fa-solid{
 	}
 	.nav-links{
 		position: absolute;
-		background-color: white;
+		background-color: rgba(0, 24, 121, 1);
 		height: 100vh;
 		width: 50vw;
 		text-align: left;
@@ -100,7 +156,7 @@ nav .fa-solid{
 	}
 	nav .fa-solid{
 		display: block;
-		color: black;
+		color: white;
 		text-align: left;
 		margin: 10px;
 		font-size: 20px;
@@ -108,5 +164,166 @@ nav .fa-solid{
 	}
 	.nav-links ul li:hover::after{
 		width: 0%;
+	}
+}
+
+/*text*/
+.descriptive-text{
+	width: 90%;
+	margin: auto;
+	text-align: justify;
+	padding-top: 2%;
+}
+.descriptive-text h1{
+	padding-bottom: .5%;
+	padding-top: .5%;
+	font-size: 30px;
+}
+.descriptive-text h2{
+	padding-top: 1%;
+	padding-bottom: .5%;
+	font-size: 20px;
+}
+.descriptive-text p{
+	font-size: 15px;
+}
+
+@media(max-width: 700px) {
+	.descriptive-text h1{
+		padding-bottom: .5%;
+		padding-top: .5%;
+		font-size: 25px;
+	}
+	.descriptive-text h2{
+		padding-top: 1%;
+		padding-bottom: .5%;
+		font-size: 15px;
+	}
+	.descriptive-text p{
+		font-size: 12px;
+	}
+}
+
+
+/*settlement images*/
+.settlement-images{
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	gap: 1%;
+	padding-top: 1%;
+	justify-content: center;
+}
+
+.settlement-images a {
+	width: 20vw; 
+	height: 65vh; 
+	display: block;
+	position: relative;
+}
+
+.settlement-images a img {
+	width: 100%; 
+	height: 100%; 
+	border-radius: 5%;
+	object-fit: cover;
+}
+
+.settlement-images a div{
+	width: 100%; 
+	height: 100%; 
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: transparent;
+	border-radius: 5%;
+	transition: .5s;
+}
+.settlement-images a div h3{
+	text-align: center;
+	padding-top: 5%;
+	font-size: 20px;
+	text-decoration: none;
+	color: transparent;
+	transition: .5s;
+}
+.settlement-images a div p{
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 5%;
+	font-size: 15px;
+	text-align: center;
+	text-decoration: none;
+	color: transparent;
+	transition: .5s;
+}
+.settlement-images a:hover div h3{
+	color: white;
+}
+.settlement-images a:hover div p{
+	color: white;
+}
+.settlement-images a.blue:hover div{
+	background: rgba(0, 24, 121, 0.7);
+}
+.settlement-images a.red:hover div{
+	background: rgba(123, 41, 0, 0.7);
+}
+.settlement-images a.green:hover div{
+	background: rgba(7, 107, 0, 0.7);
+}
+.settlement-images a.yellow:hover div{
+	background: rgba(130, 105, 1, 0.7);
+}
+
+@media(max-width: 700px){
+	.settlement-images{
+		display: flex;
+		flex-direction: column;
+		width: 100vw;
+		row-gap: 12px;
+		padding-top: 3%;
+	}
+	.settlement-images a {
+		width: 80vw; 
+		height: 25vh; 
+		display: block;
+		align-self: center;
+	}
+	.settlement-images a div{
+		width: 100%; 
+		height: 100%; 
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 5%;
+	}
+	.settlement-images a div h3{
+		text-align: center;
+		padding-top: 5%;
+		font-size: 20px;
+		text-decoration: none;
+		color: white;
+	}
+	.settlement-images a div p{
+		padding-left: 5%;
+		padding-right: 5%;
+		padding-top: 5%;
+		font-size: 15px;
+		text-align: center;
+		text-decoration: none;
+		color: transparent;
+	}
+	.settlement-images a.blue div{
+		background: rgba(0, 24, 121, 0.7);
+	}
+	.settlement-images a.red div{
+		background: rgba(123, 41, 0, 0.7);
+	}
+	.settlement-images a.green div{
+		background: rgba(7, 107, 0, 0.7);
+	}
+	.settlement-images a.yellow div{
+		background: rgba(130, 105, 1, 0.7);
 	}
 }
