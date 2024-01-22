@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="smaller-header">
+    <section class="header">
         <nav>
             <a href="index.html"><img src="images/logoPlaceholder.png"></a>
             <div class="nav-links" id="nav-links">
@@ -32,10 +32,10 @@
         </div>
     </section>
 
-    <section class="settlement-images">
-        <a href="" class="blue">
+    <section class="row">
+        <a href="" class="selectable-card">
             <img src="images/tanayuArchipelagoPlaceholder.jpg" alt="A photo of a Tanayu Archipelago">
-            <div>
+            <div style="--layer-color: rgba(0, 24, 121, 0.7)">
                 <h3>TANAYU ARCHIPELAGOS</h3>
                 <p>
                     Tanayu naturally form groups called <em>archipelagos</em>.
@@ -46,25 +46,25 @@
                 </p>
             </div>
         </a>
-        <a href="" class="red">
+        <a href="" class="selectable-card">
             <img src="images/tanayuArchipelagoPlaceholder.jpg" alt="A photo of a Tanayu Archipelago">
-            <div>
+            <div style="--layer-color: rgba(123, 41, 0, 0.7)">
                 <h3>HARBORS</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex maxime hic itaque et, dolores harum, commodi nemo vero voluptates doloribus est perferendis laudantium deleniti aspernatur, tenetur magni aliquam assumenda suscipit!</p>
             </div>
         </a>
-        <a href="" class="green">
+        <a href="" class="selectable-card">
             <img src="images/tanayuArchipelagoPlaceholder.jpg" alt="A photo of a Tanayu Archipelago">
-            <div>
+            <div style="--layer-color: rgba(7, 107, 0, 0.7)">
                 <h3>BOAT FLEETS</h3>
                 <p>
                     COMING SOON
                 </p>
             </div>
         </a>
-        <a href="" class="yellow">
+        <a href="" class="selectable-card">
             <img src="images/tanayuArchipelagoPlaceholder.jpg" alt="A photo of a Tanayu Archipelago">
-            <div>
+            <div style="--layer-color: rgba(130, 105, 1, 0.7)">
                 <h3>THE POLES</h3>
                 <p>
                     COMING SOON
@@ -79,8 +79,18 @@
             navLinks.style.right = "0";
         }
         function hideMenu(){
-            navLinks.style.right = "-57vw";
+            navLinks.style.right = "-60vw";
         }
     </script>
+    <script>
+        // Get all elements with the class 'custom-color'
+        const elements = document.querySelectorAll('.selectable-card');
+    
+        // Loop through each element and set its color based on the 'data-color' attribute
+        elements.forEach(element => {
+          const color = element.getAttribute('data-color');
+          element.style.color = color;
+        });
+      </script>
 </body>
 </html>
