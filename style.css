@@ -121,6 +121,9 @@ nav .fa-solid {
   .header-fullscreen {
     height: 100vh;
   }
+  .header-fullscreen nav {
+    padding: 2% 3% 20%;
+  }
   .text-box h1 {
     font-size: 35px;
   }
