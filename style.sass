@@ -7,8 +7,8 @@ $text-color: black
 	margin: 0
 	padding: 0
 	font-family: 'Poppins', sans-serif
-	//outline: solid 1px black
-	//outline-offset: -1px
+	outline: solid 1px black
+	outline-offset: -1px
 
 .header
 	background-image: linear-gradient($transparent-layer-color,$transparent-layer-color), url(images/ocean.jpg)
@@ -82,8 +82,9 @@ nav .fa-solid
 	background: $layer-color
 	z-index: 5
 
-.droppable-nav:hover ul
-	display: block
+@media(min-width: 700px)
+	.droppable-nav:hover ul
+		display: inline-block
 
 .wip
 	text-decoration: line-through
@@ -192,10 +193,7 @@ nav .fa-solid
 		padding-left: 10%
 		text-align: left
 
-	.droppable-nav:hover ul
-		display: block
-
-	.wip
+	.droppable-nav ul li.wip a
 		text-decoration: line-through
 		pointer-events: none
 		color: $header-text-color
