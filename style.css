@@ -59,7 +59,7 @@ nav .fa-solid {
 .nav-links ul li::after {
   content: "";
   width: 0%;
-  height: 2px;
+  height: 3px;
   background-color: white;
   display: block;
   margin: auto;
@@ -68,6 +68,33 @@ nav .fa-solid {
 
 .nav-links ul li:hover::after {
   width: 100%;
+}
+
+.droppable-nav {
+  position: relative;
+}
+
+.droppable-nav ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  transition: 0.5s;
+  text-align: left;
+  background: rgb(0, 24, 121);
+  z-index: 5;
+}
+
+.droppable-nav:hover ul {
+  display: block;
+}
+
+.wip {
+  text-decoration: line-through;
+  pointer-events: none;
+  color: white;
 }
 
 /*---HEADER TEXT BOX---*/
@@ -161,6 +188,29 @@ nav .fa-solid {
   }
   .nav-links ul li:hover::after {
     width: 0%;
+  }
+  .droppable-nav {
+    position: relative;
+  }
+  .droppable-nav a {
+    pointer-events: none;
+  }
+  .droppable-nav ul li a {
+    pointer-events: auto;
+  }
+  .droppable-nav ul {
+    display: none;
+    position: relative;
+    padding-left: 10%;
+    text-align: left;
+  }
+  .droppable-nav:hover ul {
+    display: block;
+  }
+  .wip {
+    text-decoration: line-through;
+    pointer-events: none;
+    color: white;
   }
 }
 /*SELECTABLE CARDS*/
