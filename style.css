@@ -144,7 +144,7 @@ nav .fa-solid {
 /*---HEADER WITH NAV AND TEXT BOX FOR MOBILE---*/
 @media (max-width: 700px) {
   .header, .header-fullscreen {
-    height: 20vh;
+    height: 15vh;
   }
   .header-fullscreen {
     height: 100vh;
