@@ -10,7 +10,7 @@
   position: relative;
   background-position: center;
   max-width: 100vw;
-  height: 30vh;
+  height: 200px;
 }
 .header-fullscreen {
   height: 100vh;
@@ -87,7 +87,7 @@ nav .fa-solid {
   z-index: 5;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 767px) {
   .droppable-nav:hover ul {
     display: inline-block;
   }
@@ -142,9 +142,14 @@ nav .fa-solid {
 }
 
 /*---HEADER WITH NAV AND TEXT BOX FOR MOBILE---*/
-@media (max-width: 700px) {
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  .header-fullscreen {
+    height: 210vh;
+  }
+}
+@media (max-width: 767px) {
   .header, .header-fullscreen {
-    height: 15vh;
+    height: 125px;
   }
   .header-fullscreen {
     height: 100vh;
@@ -272,7 +277,7 @@ nav .fa-solid {
 }
 
 /*---SELECTABLE CARDS FOR PHONE---*/
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .row {
     display: flex;
     flex-direction: column;
@@ -325,7 +330,7 @@ nav .fa-solid {
   font-size: 15px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .plain-text {
     width: 90%;
     margin: auto;
