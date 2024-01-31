@@ -52,7 +52,7 @@ function updateTitle(verb){
         document.getElementById("VerbAndGroup").innerHTML = title;
         return true;
     }
-    document.getElementById("VerbAndGroup").innerHTML = "We couldn't fin the verb: " + upperCaseVerb;
+    document.getElementById("VerbAndGroup").innerHTML = "Sorry, we couldn't find the verb: " + upperCaseVerb;
     return false; 
 }
 
@@ -63,7 +63,7 @@ function conjugateVerb(){
         document.getElementById("tables").innerHTML = "";
         return;
     } 
-    var tables = conjugate_all_tenses(verb,verbsAndGroup[verb]);
+    var tables = conjugate_all_forms(verb,verbsAndGroup[verb]);
     var tableString = "";
     for(let i = 0; i < tables.length; i += 2){
         tableString += make_table_pair(tables[i],tables[i+1]);
@@ -174,14 +174,12 @@ function apply_suffix(stem, suffix, voicing = false){
     return stem + suffix;
 }
 //returns the correct form(s) of the verb for one person (and number) in a specified tense
-function conjugate_one_tense_one_person(stem, group, pronoun, tense){
+function conjugate_one_tense_one_person(stem, group, pronoun, tense, post_reduced){
     //get the group and subgroup as separate variables
     var cj_group, cj_subgroup; [cj_group,cj_subgroup] = get_group(group);
     //get the ID for the pronoun (0-8)
     var person_and_number = pronouns[pronoun];
-    //get the post reduced form
-    var post_reduced = get_post_reduced_form(stem);
-
+    
     var conjugated_form = stem;
     //if its imperfective, reduplicate (meso-reduplication)
     if(tenses[tense][2] == 1) conjugated_form = apply_suffix(conjugated_form,post_reduced,true);
@@ -208,24 +206,71 @@ function conjugate_one_tense_one_person(stem, group, pronoun, tense){
     return conjugated_form;
 }
 //returns a table with the entire conjugation for a given tense
-function conjugate_one_tense(stem, group, tense, title){
+function conjugate_one_tense(stem, group, tense, title,  post_reduced){
     var table_values = [];
     var pronoun_pairs = [['ang','ane'],['---','anak'],['ngak','akje'],['ip','pip'],['se','sese']];
     //treat pronouns as pairs to have them in the same table row
     for(let pair of pronoun_pairs){
-        if(pair[0] == '---') table_values.push(['---','---',pair[1],conjugate_one_tense_one_person(stem,group,pair[1],tense)])
+        if(pair[0] == '---') table_values.push(['---','---',pair[1],conjugate_one_tense_one_person(stem,group,pair[1],tense,post_reduced)])
         else{
-            var row = [pair[0],conjugate_one_tense_one_person(stem,group,pair[0],tense),pair[1],conjugate_one_tense_one_person(stem,group,pair[1],tense)];
+            var row = [pair[0],conjugate_one_tense_one_person(stem,group,pair[0],tense,post_reduced),pair[1],conjugate_one_tense_one_person(stem,group,pair[1],tense,post_reduced)];
             table_values.push(row);
         }
     }
     return make_table(title, table_values);
 }
-function conjugate_all_tenses(infinitive, group){
+function conjugate_all_forms(infinitive, group){
     var stem = infinitive.slice(0,-2);
-    var tense_pairs = [['PRS','Present'],['HAB','Habitual'],['PRET','Preterite'],['IMPF','Imperfect'],
-                      ['FUT','Future'],['H.FUT','Habitual Future'],['COND','Conditional'],['H.COND','Habitual Conditional']];
+    var post_reduced = get_post_reduced_form(stem);
+   
     var all_tenses_tables = [];
-    for(let pair of tense_pairs) all_tenses_tables.push(conjugate_one_tense(stem,group,pair[0],pair[1]));
+
+    //impersonal forms tables
+    all_tenses_tables.push(conjugate_infinitives(infinitive,post_reduced));
+    all_tenses_tables.push(conjugate_stand_alones(stem,post_reduced));
+    //personal forms tables
+    var tense_pairs = [['PRS','Present'],['HAB','Habitual'],['PRET','Preterite'],['IMPF','Imperfect'],
+    ['FUT','Future'],['H.FUT','Habitual Future'],['COND','Conditional'],['H.COND','Habitual Conditional']];
+
+    for(let pair of tense_pairs) all_tenses_tables.push(conjugate_one_tense(stem,group,pair[0],pair[1],post_reduced));
     return all_tenses_tables;
+}
+//returns a table with all of the infinitive forms
+function conjugate_infinitives(infinitive, post_reduced){
+    var stem = infinitive.slice(0,-2);
+    var suffix = infinitive.slice(-2);
+    var infinitives = [];
+    
+    //reuse calculations
+    var reduplicated_stem = apply_suffix(stem,post_reduced,true);
+    var future_stem = apply_suffix(stem,'kan');
+    var reduplicated_future = apply_suffix(reduplicated_stem,'kan');
+    //present and habitual
+    infinitives.push(['Present',infinitive,'Habitual',reduplicated_stem + suffix]);
+    //preterite and imperfect
+    infinitives.push(['Preterite',stem + 'o' + suffix,'Imperfect',reduplicated_stem + 'o' + suffix]);
+    //future and habitual future
+    infinitives.push(['Future',future_stem+suffix,'H. Future',reduplicated_future+suffix]);
+    //conditional and habitual conditional
+    infinitives.push(['Conditional',future_stem+'o'+suffix,'H. Conditional',reduplicated_future+'o'+suffix]);
+
+    return make_table('Infinitives', infinitives);
+}
+
+function conjugate_stand_alones(stem, post_reduced){
+    var standalones = [];
+    //reuse calculations
+    var reduplicated_stem = apply_suffix(stem,post_reduced,true);
+    var future_stem = apply_suffix(stem,'kan');
+    var reduplicated_future = apply_suffix(reduplicated_stem,'kan');
+    //present and habitual
+    standalones.push(['Present',stem,'Habitual',reduplicated_stem + '<br> ' + stem + ' ' + post_reduced]);
+    //preterite and imperfect
+    standalones.push(['Preterite',stem + 'o','Imperfect',reduplicated_stem + 'o' + '<br>' + stem + 'o ' + post_reduced]);
+    //future and habitual future
+    standalones.push(['Future',future_stem,'H. Future',reduplicated_future + '<br>' + future_stem + ' ' + post_reduced]);
+    //conditional and habitual conditional
+    standalones.push(['Conditional',future_stem+'o','H. Conditional',reduplicated_future+'o' + '<br>' + future_stem+'o '+post_reduced]);
+
+    return make_table('Stand-alone forms', standalones);
 }
