@@ -19,6 +19,20 @@
             border: 1px solid black;
             padding: 3px;
         }
+        th {
+            text-align: left;
+            padding: 3px 10px;
+        }
+        .table-pair {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        td:nth-child(odd), th:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        
     </style>
 </head>
 <body>
@@ -81,14 +95,6 @@
         <h1 id="VerbAndGroup">No verb selected.</h1>
         <div id="tables"></div>
     </section>
-    <!--script>
-        function goToConjugate(){
-            const verbField = document.getElementById("verbInfinitive");
-            const verb = verbField.value;
-            window.open("ShasvinConjugatedVerbs/" + verb + ".html", '_blank');
-            return false;
-        }
-    </script-->
     <script src="shasvinVerbConjugator.js"></script>
     <script>
         var navLinks = document.getElementById("nav-links");
