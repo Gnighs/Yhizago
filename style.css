@@ -353,9 +353,4 @@ nav .fa-solid {
     font-size: 12px;
   }
 }
-form.verb-selector {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-}
 /*# sourceMappingURL=style.css.map */

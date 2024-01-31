@@ -1,8 +1,16 @@
 var verbsAndGroup = {
+    "ahakal":"1.3",
+    "ajul":"3.1",
+    "epal":"1.3",
+    "jutal":"1.2",
+    "lahabekal":"1.3",
+    "lihutal":"1.3",
+    "pekal":"1.3",
+    "sahil":"2",
+    "sail":"2",
     "tihatal":"1.3",
-    "upalil":"2.P",
-    "ajul":"3.1"
-}
+    "upalil":"2"
+    }
 //[past, future, imperfective]
 var tenses = {
   "PRS": [0, 0, 0],
@@ -21,6 +29,7 @@ var perfective_equivalents = {
   "H.COND": "COND"
 };
 var voiced_equivalents = {"p": "b", "t": "d", "k": "g"};
+var unvoiced_equivalents = {"b": "p", "d": "t", "g": "k"};
 var pronouns = {"ang": 0, "ngak": 1, "ip": 2, "se": 3, "ane": 4, "anak": 5, "akje": 6, "pip": 7, "sese": 8};
 
 var conj_one_one_np = ["a", "kak", "ip", "s", "ane", "anak", "kje", "pi", "ase"];
@@ -49,6 +58,7 @@ function updateTitle(verb){
 
 function conjugateVerb(){
     const verb = document.getElementById("infinitive").value.toLowerCase();
+    if(verb == '') return;
     if(!updateTitle(verb)){
         document.getElementById("tables").innerHTML = "";
         return;
@@ -63,6 +73,7 @@ function conjugateVerb(){
 
 //gets two variables group and subgroup from a string of the type A.B
 function get_group(group){
+    if(group == '2') return [2,1];
     var indexes = group.split('.');
     var subgroup = indexes[1];
     if(subgroup == 'P') subgroup = '1';
@@ -109,6 +120,10 @@ function get_post_reduced_form(stem){
     }
     //select the right substring with only one vowel
     var one_vowel = new_str.slice(-count);
+    //devoice start if needed
+    if(is_in(one_vowel.charAt(0),['b','d','g'])){
+        one_vowel = unvoiced_equivalents[one_vowel.charAt(0)] + one_vowel.slice(1);
+    }
     if (one_vowel.length < 1) return ""
     var req_len = 3;
     //if there is a second consonant on offset make length 4
