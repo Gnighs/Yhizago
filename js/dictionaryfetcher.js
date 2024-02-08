@@ -1,7 +1,7 @@
 var dictionary;
 var verbsAndGroup = {};
 
-const baseUrl = "https://script.google.com/macros/s/AKfycbylT-9rBTb0c7FeKKYfgXxoTqc-wQM8aEAP1b332NCP65yIQUtfgUKjOP-0Dv9RFdlt/exec";  // Please set your Web Apps URL.
+const baseUrl = "https://script.google.com/macros/s/AKfycbw_2MknLmC2cm5PO_twWLLoIcF2rE_WpDxrzojlfcBJY-XBANs1JGpjtE_foUQGgr3r/exec";  // Please set your Web Apps URL.
 const para = {
   spreadsheetId: "1UGaoVI-6SvUeJ-Ysdpdsg04bebRy3kfz5v9TYiUEHsk",  // Please set your Google Spreadsheet ID.
   sheetName: "convertedDictionary"  // Please set the sheet name you want to retrieve the values.
