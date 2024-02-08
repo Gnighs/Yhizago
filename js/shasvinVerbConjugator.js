@@ -1,4 +1,4 @@
-var verbsAndGroup = {
+/*var verbsAndGroup = {
     "ahakal":"1.3",
     "ajul":"3.1",
     "epal":"1.3",
@@ -10,7 +10,7 @@ var verbsAndGroup = {
     "sail":"2",
     "tihatal":"1.3",
     "upalil":"2"
-    }
+    }*/
 //[past, future, imperfective]
 var tenses = {
   "PRS": [0, 0, 0],

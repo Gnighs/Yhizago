@@ -64,16 +64,20 @@
         </div>
     </section>
     <section class="plain-text">
-        <form autocomplete="off" onsubmit="return false">
-            <div class="autocomplete" style="width:300px;">
-                <input id="infinitive" type="text" name="infinitive" placeholder="Infinitive...">
-            </div>
-            <input type="submit" onclick="return conjugateVerb()">
-        </form>
-        <h1 id="VerbAndGroup">No verb selected.</h1>
-        <div id="tables"></div>
+        <section id="conjugationDisplay" style="display: none;">
+            <form autocomplete="off" onsubmit="return false">
+                <div class="autocomplete" style="width:300px;">
+                    <input id="infinitive" type="text" name="infinitive" placeholder="Infinitive...">
+                </div>
+                <input type="submit" onclick="return conjugateVerb()">
+            </form>
+            <h1 id="VerbAndGroup">No verb selected.</h1>
+            <div id="tables"></div>
+        </section>
+        <section id="loadingDictionary">Fetching the dictionary...</section>
     </section>
 
+    <script src="../../../js/dictionaryfetcher.js"></script>
     <script src="../../../js/shasvinVerbConjugator.js"></script>
     <script src="../../../js/autocomplete.js"></script>
     <script src="../../../js/navlinks.js"></script>
