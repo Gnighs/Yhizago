@@ -1,18 +1,3 @@
-var fetched;
-var dictionary = {}
-var verbsAndGroup = {
-  "ahakal":"1.3",
-  "ajul":"3.1",
-  "epal":"1.3",
-  "jutal":"1.2",
-  "lahabekal":"1.3",
-  "lihutal":"1.3",
-  "pekal":"1.3",
-  "sahil":"2",
-  "sail":"2",
-  "tihatal":"1.3",
-  "upalil":"2"
-  }
 
 const baseUrl = "https://script.google.com/macros/s/AKfycbw_2MknLmC2cm5PO_twWLLoIcF2rE_WpDxrzojlfcBJY-XBANs1JGpjtE_foUQGgr3r/exec";  // Please set your Web Apps URL.
 const para = {
@@ -25,7 +10,7 @@ const url = baseUrl + "?" + q;
 fetch(url)
   .then(res => res.json())
   .then(res => {
-    fetched = res.values;
+    let fetched = res.values;
     for(let i of fetched){
         let word = i[1].toLowerCase();
         if(i[4] == '1.1 v.' || i[4] == '1.2 v.' || i[4] == '1.3 v.' || i[4] == '2 v.'||  i[4] == '3.1 v.' || i[4] == '3.2 v.'){
@@ -33,6 +18,7 @@ fetch(url)
         }
         dictionary[word] = i.slice(0, 1).concat(i.slice(2));
     }
-    document.getElementById("loadingDictionary").style.display = "none";
-    document.getElementById("toLoad").style.display = "block";
+    console.log(dictionary);
+    //document.getElementById("loadingDictionary").style.display = "none";
+    //document.getElementById("toLoad").style.display = "block";
   });

@@ -64,7 +64,8 @@
         </div>
     </section>
     <section class="plain-text">
-        <section id="toLoad" style="display: none;">
+        <!--section id="toLoad" style="display: none;"-->
+        <section>
             <form autocomplete="off" onsubmit="return false">
                 <div class="autocomplete" style="width:300px;">
                     <input id="searchedWord" type="text" name="searchedWord" placeholder="Search for a word...">
@@ -81,9 +82,10 @@
             <h1 id="VerbAndGroup"></h1>
             <div id="verbTables"></div>
         </section>
-        <section id="loadingDictionary">Fetching the dictionary...</section>
+        <!--section id="loadingDictionary">Fetching the dictionary...</section-->
     </section>
 
+    <script src="../../../js/dictionaryCache.js"></script>
     <script src="../../../js/dictionaryfetcher.js"></script>
     <script src="../../../js/onlineDictionary.js"></script>
     <script src="../../../js/shasvinVerbConjugator.js"></script>
