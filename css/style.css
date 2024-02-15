@@ -4,6 +4,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.normalFont {
+  font-family: Arial, sans-serif;
+}
+
 .header, .header-fullscreen {
   background-image: linear-gradient(rgba(0, 24, 121, 0.5), rgba(0, 24, 121, 0.5)), url("../images/ocean.jpg");
   background-size: cover;

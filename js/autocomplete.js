@@ -20,7 +20,7 @@ function autocomplete(inp, dict) {
                 b = document.createElement("DIV");
                 b.innerHTML = "<strong>" + key.substr(0, val.length) + "</strong>";
                 b.innerHTML += key.substr(val.length);
-                b.innerHTML += "<input type='hidden' value='" + key + "'>";
+                b.innerHTML += "<input type='hidden' value='" + key.replace("'", "&#39;") + "'>";
                 
                 b.addEventListener("click", function(e) {
                     inp.value = this.getElementsByTagName("input")[0].value; // Set the selected key as the value
@@ -76,5 +76,3 @@ function autocomplete(inp, dict) {
         closeAllLists(e.target);
     });
 }
-
-  autocomplete(document.getElementById("infinitive"), verbsAndGroup);

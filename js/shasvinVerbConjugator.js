@@ -1,16 +1,3 @@
-/*var verbsAndGroup = {
-    "ahakal":"1.3",
-    "ajul":"3.1",
-    "epal":"1.3",
-    "jutal":"1.2",
-    "lahabekal":"1.3",
-    "lihutal":"1.3",
-    "pekal":"1.3",
-    "sahil":"2",
-    "sail":"2",
-    "tihatal":"1.3",
-    "upalil":"2"
-    }*/
 //[past, future, imperfective]
 var tenses = {
   "PRS": [0, 0, 0],
@@ -57,10 +44,10 @@ function updateTitle(verb){
 }
 
 function conjugateVerb(){
-    const verb = document.getElementById("infinitive").value.toLowerCase();
+    const verb = document.getElementById("searchedWord").value.toLowerCase();
     if(verb == '') return;
     if(!updateTitle(verb)){
-        document.getElementById("tables").innerHTML = "";
+        document.getElementById("verbTables").innerHTML = "";
         return;
     } 
     let tables = conjugate_all_forms(verb,verbsAndGroup[verb]);
@@ -68,7 +55,7 @@ function conjugateVerb(){
     for(let i = 0; i < tables.length; i += 2){
         tableString += make_table_pair(tables[i],tables[i+1]);
     }
-    document.getElementById("tables").innerHTML = tableString;
+    document.getElementById("verbTables").innerHTML = tableString;
 }
 
 //gets two variables group and subgroup from a string of the type A.B
