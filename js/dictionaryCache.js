@@ -11,8 +11,8 @@ var verbsAndGroup = {
     "sail":"2",
     "tihatal":"1.3",
     "upalil":"2"
-}
-var dictionary = {
+    }
+    var dictionary = {
     "ahak": ["\\entryNoMeaning", "Ahak", "ak", "aj", "n.", "Shasvin", "ahak", "", "No. Stand-alone form of the verb \\textit{ahakal} meaning \\textit{to fail} used as a negative echo response that became an invariable word used as \"No\"."],
     "ahakal": ["\\entry", "Ahakal", "akal", "'akəw", "1.3 v.", "Parkjol Saspine", "ahak wel", "fail action", "To fail. To leave undone. \\continue{1.3. aux. v.}{Used for the negative. Negates the action of the secondary verb.}"],
     "ahifo": ["\\entry", "Ahifo", "aiu", "'n̩ʊ", "n.", "Anta", "ahifo", "barrier", "Ocean. Sea."],
@@ -61,7 +61,7 @@ var dictionary = {
     "lahapek": ["\\entry", "Lahapek", "lapek", "'lapɛj", "n.", "Parkjol Saspine", "laha pek", "high speech", "The formal speech and spelling varieties of Shasvin. \\continue{adj.}{Relating to lahapek.}"],
     "larruk": ["\\entryUnkownOrigin", "Larruk", "lahuk", "'lahʊj", "n.", "", "", "", "WIP a species of marine slug. Snail."],
     "lasa": ["\\entry", "Lasa", "langa", "'ləzə", "n.", "Anta ", "lasa", "defeat", "Defeat. Loss."],
-    "lasal": ["\\entryNoMeaning", "Lasal", "langal", "'ləzəw", "1.1 v.", "Anta and Shasvin", "lasa + -al", "lose", "\\textbf{tr:} To defeat. To win against. \\textbf{int:} To be defeated. To lose."],
+    "lasal": ["\\entryNoMeaning", "Lasal", "langal", "'ləzəw", "1.1 v.", "Anta and Shasvin", "lasa + -al", "", "\\textbf{tr:} To defeat. To win against. \\textbf{int:} To be defeated. To lose."],
     "lihut": ["\\entry", "Lihut", "jut", "jʊs", "n.", "Parkjol Saspine", "lihut", "ear", "Ear. Used as a root noun in classical counting to represent two relatively distant units."],
     "lihutal": ["\\entry", "Lihutal", "jutal", "'jʊtəw", "1.3 v.", "Parkjol Saspine", "lihut wel", "hear action", "To hear. To listen."],
     "matje": ["\\entry", "Matje", "matt", "mat͡s", "n.", "Parkjol Saspine", "matje", "limb", "Limb."],
@@ -82,7 +82,7 @@ var dictionary = {
     "sjomatje": ["\\entry", "Sjomatje", "siomatt", "'ʃɔmət͡s", "n.", "Parkjol Saspine", "sjoke matje", "upper limb", "Arm."],
     "tahrik": ["\\entry", "Tahrik", "tarek", "'tarɛj", "n.", "WIP", "WIP", "WIP", "A long dress made of WIP tightened at the stomach that features beautiful embroidery. Part of the traditional woman's attire."],
     "tana": ["\\entry", "Tana", "tana", "'tənə", "n.", "Anta", "tana", "ground", "Ground. Floor. Albasoil, a substance found atop the tanayu. Sand."],
-    "tanatihahak": ["\\entryNoMeaning", "Tanatihahak", "tanatiak", "tənə't͡saj", "n.", "Shasvin", "tana tihat ahak", "", "\"Land that does not move\": A Harbor, in the sense of a manmade island-like structure in a shallow area of Yhizago. \\continue{adj.}{Relating to Harbors. Used to describe one of the main dialects of Shasvin spoken in these structures.}"],
+    "tanatihahak": ["\\entryFreeEtymology", "Tanatihahak", "tanatiak", "tənə't͡saj", "n.", "from Shasvin \\textit{tana tihat ahak} an odd way of saying \"Land that does not move\"", "", "", "A Harbor, in the sense of a manmade island-like structure in a shallow area of Yhizago. \\continue{adj.}{Relating to Harbors. Used to describe one of the main dialects of Shasvin spoken in these structures.}"],
     "tibi": ["\\entry", "Tibi", "tiebi", "'t͡sɛbɪ", "adj.", "Parkjol Saspine", "tipi", "small", "Small. Short. Thin. Shallow."],
     "tihat": ["\\entry", "Tihat", "tiat", "t͡sas", "n.", "Parkjol Saspine", "tihat", "foot", "Foot. Used as a root noun in classical counting to represent five dissimilar units."],
     "tihatal": ["\\entry", "Tihatal", "tiatal", "'t͡sətəw", "1.3 v.", "Parkjol Saspine", "tihat wel", "walk action", "To go. To walk."],
@@ -92,5 +92,4 @@ var dictionary = {
     "upali": ["\\entry", "Upali", "baj", "'bəj", "n.", "Parkjol Saspine", "upali", "arrival", "Arrival. Achievement."],
     "upalil": ["\\entry", "Upalil", "baju", "'bəju", "2 v.", "Parkjol Saspine", "upali wel", "arrive action", "To arrive. To come. To achieve. To reach."],
     "utijota": ["\\entryNoMeaning", "Utijota", "dijota", "d͡zi'jɔtə", "n.", "Shasvin", "uti- + jota", "", "Female genitalia. \\continue{exc.}{\"F*ck!\" \"Damn it!\" and similar.}"]
-}
-    
+    }
