@@ -27,10 +27,12 @@ function displayWord(){
 
      if(dictionary[word][3].includes(" v.")){
         conjugateVerb();
+        document.getElementById("conjugationButton").style.display = "inline-block";
      }
      else{
         document.getElementById("VerbAndGroup").innerHTML = "";
         document.getElementById("verbTables").innerHTML = "";
+        document.getElementById("conjugationButton").style.display = "none";
      }
 }
 

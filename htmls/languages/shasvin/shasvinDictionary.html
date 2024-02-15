@@ -89,8 +89,13 @@
             <p id="wordClass"></p>
             <p id="etymology"></p>
             <p id="meaning"></p>
-            <h1 id="VerbAndGroup"></h1>
-            <div id="verbTables"></div>
+            <button id="conjugationButton" style="display: none;">Show conjugations</button>
+            <section id="verbConjugationDropDown" style="display: none;">
+                <h1 id="VerbAndGroup"></h1>
+                <div id="verbTables"></div>
+            </section>
+            
+            
         </section>
         <!--section id="loadingDictionary">Fetching the dictionary...</section-->
     </section>
@@ -104,5 +109,22 @@
         autocomplete(document.getElementById("searchedWord"), dictionary);
     </script>
     <script src="../../../js/navlinks.js"></script>
+    <script>
+        // Get references to the button and the div containing the content
+        var toggleButton = document.getElementById("conjugationButton");
+        var verbTablesDiv = document.getElementById("verbConjugationDropDown");
+
+        // Add event listener to the button
+        toggleButton.addEventListener("click", function() {
+            // Toggle the display property of the div between "block" and "none"
+            if (verbTablesDiv.style.display === "none") {
+                verbTablesDiv.style.display = "block";
+                toggleButton.innerHTML = "Hide conjugations";
+            } else {
+                verbTablesDiv.style.display = "none";
+                toggleButton.innerHTML = "Show conjugations";
+            }
+        });
+    </script>
 </body>
 </html>
