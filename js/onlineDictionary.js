@@ -40,5 +40,6 @@ function latexBasedintoHTMLbased(string){
     let editedString = string.replace(/\\textit{([^}]+)}/g, '<em>$1</em>');
     editedString = editedString.replace(/\\textbf{([^}]+)}/g, '<strong>$1</strong>');
     editedString = editedString.replace(/\\continue{([^}]*)}{([^}]*)}/, '<br><strong>$1</strong> $2');
+    //editedString = editedString.replace(/\/([^\/]*)\//g, '<em class="normalText">/$1/</em>');
     return editedString;
 }

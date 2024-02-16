@@ -71,6 +71,9 @@
   td:nth-child(odd), th:nth-child(odd) {
       background-color: #f2f2f2;
   }
+  .verbTables em{
+    font-style: normal;
+  }
 
   @media(max-width: 767px) {
     .table-pair {

@@ -72,6 +72,9 @@
             <br>In a future there will be a link for pdf of a formal LaTeX based dictionary <a href="">here</a>.
             <br> There is currently no support for English-Shasvin queries and the closest thing to them is
             using Ctrl+F in the pdf version of the dictionary. I might work on adding these types of queries in the future.
+            <br><strong>Note:</strong> Only meso-reduplicated forms of verbs are provided. The post-reduced form is shown separatedly so
+            you can make the post-reduplicated froms yourself from the perfective conjugations. There might also be some errors in the pronunciation
+            of the verb forms, contrast them with the pronunciation of the infinitive, especially for the vowels.
         </p>
         <br>
         <!--section id="toLoad" style="display: none;"-->
@@ -87,12 +90,12 @@
             <p id="ippek"></p>
             <p id="ipa" class="normalFont"></p>
             <p id="wordClass"></p>
-            <p id="etymology"></p>
+            <p id="etymology" class="etymology"></p>
             <p id="meaning"></p>
             <button id="conjugationButton" style="display: none;">Show conjugations</button>
             <section id="verbConjugationDropDown" style="display: none;">
                 <h1 id="VerbAndGroup"></h1>
-                <div id="verbTables"></div>
+                <div id="verbTables" class="verbTables"></div>
             </section>
             
             
@@ -103,7 +106,10 @@
     <script src="../../../js/dictionaryCache.js"></script>
     <script src="../../../js/dictionaryfetcher.js"></script>
     <script src="../../../js/onlineDictionary.js"></script>
+    <script src="../../../js/rules.js"></script>
     <script src="../../../js/shasvinVerbConjugator.js"></script>
+    <script src="../../../TriSCA/wordPronouncer.js"></script>
+    
     <script src="../../../js/autocomplete.js"></script>
     <script>
         autocomplete(document.getElementById("searchedWord"), dictionary);

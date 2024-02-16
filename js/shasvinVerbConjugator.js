@@ -52,7 +52,8 @@ function conjugateVerb(){
     } 
     let tables = conjugate_all_forms(verb,verbsAndGroup[verb]);
     let tableString = "";
-    for(let i = 0; i < tables.length; i += 2){
+    tableString += '<div class="table-pair">' + tables[0] + '</div>';
+    for(let i = 1; i < tables.length; i += 2){
         tableString += make_table_pair(tables[i],tables[i+1]);
     }
     document.getElementById("verbTables").innerHTML = tableString;
@@ -177,9 +178,18 @@ function conjugate_one_tense_one_person(stem, group, pronoun, tense, post_reduce
 
     //add person suffix
     conjugated_form = apply_suffix(conjugated_form, conjugating_suffixes[cj_group-1][cj_subgroup-1][person_and_number]);
+    if(conjugated_form.includes('<br>')){
+        let twoParts = conjugated_form.split('<br>');
+        conjugated_form = twoParts[0] + '<br> <em class="normalFont">/' + getPronunciation(twoParts[0]) + '/</em>'
+        + '<br>' + twoParts[1] + '<br> <em class="normalFont">/' + getPronunciation(twoParts[1]) + '/</em>';
+    }
+    else{
+        let firstPronunciation = getPronunciation(conjugated_form);
+        conjugated_form += '<br> <em class="normalFont">/' + firstPronunciation + '/</em>'; 
+    }
 
     //if its imperfective, make post-reduplication by conjugating in perfective followed by post reduced form
-    if(tenses[tense][2] == 1){
+    /*if(tenses[tense][2] == 1){
         let post_reduplicated = conjugate_one_tense_one_person(stem,group,pronoun,perfective_equivalents[tense]);
         //check if two suffixes were applied
         if(post_reduplicated.includes('<br>')){
@@ -189,7 +199,9 @@ function conjugate_one_tense_one_person(stem, group, pronoun, tense, post_reduce
         else{
             conjugated_form += '<br>' + post_reduplicated + ' ' + post_reduced;
         }
-    }
+    }*/
+    //let pronunciation = getPronunciation(conjugated_form);
+    //return conjugated_form + ' <br> /' + pronunciation + '/';
     return conjugated_form;
 }
 //returns a table with the entire conjugation for a given tense
@@ -213,13 +225,15 @@ function conjugate_all_forms(infinitive, group){
     let all_tenses_tables = [];
 
     //impersonal forms tables
+    
     all_tenses_tables.push(conjugate_infinitives(infinitive,post_reduced));
     all_tenses_tables.push(conjugate_stand_alones(stem,post_reduced));
     //personal forms tables
-    let tense_pairs = [['PRS','Present'],['HAB','Habitual'],['PRET','Preterite'],['IMPF','Imperfect'],
-    ['FUT','Future'],['H.FUT','Habitual Future'],['COND','Conditional'],['H.COND','Habitual Conditional']];
+    let tense_pairs = [['PRS','Present'],['HAB','Habitual (Meso-reduplicated)'],['PRET','Preterite'],['IMPF','Imperfect (Meso-reduplicated)'],
+    ['FUT','Future'],['H.FUT','Habitual Future (Meso-reduplicated)'],['COND','Conditional'],['H.COND','Habitual Conditional (Meso-reduplicated)']];
 
     for(let pair of tense_pairs) all_tenses_tables.push(conjugate_one_tense(stem,group,pair[0],pair[1],post_reduced));
+    all_tenses_tables.unshift(make_table("Post reduced form",[["Form",post_reduced + ' <em class="normalFont">/' + getPronunciation(post_reduced) + '/</em>']]));
     return all_tenses_tables;
 }
 //returns a table with all of the infinitive forms
@@ -241,6 +255,14 @@ function conjugate_infinitives(infinitive, post_reduced){
     //conditional and habitual conditional
     infinitives.push(['Conditional',future_stem+'o'+suffix,'H. Conditional',reduplicated_future+'o'+suffix]);
 
+    for(row of infinitives){
+        for(let i in row){
+            if(i%2 != 0){
+                row[i] = row[i] + '<br> <em class="normalFont">/' + getPronunciation(row[i]) + '/</em>';
+            }
+        }
+    }
+
     return make_table('Infinitives', infinitives);
 }
 
@@ -251,13 +273,21 @@ function conjugate_stand_alones(stem, post_reduced){
     let future_stem = apply_suffix(stem,'kan');
     let reduplicated_future = apply_suffix(reduplicated_stem,'kan');
     //present and habitual
-    standalones.push(['Present',stem,'Habitual',reduplicated_stem + '<br> ' + stem + ' ' + post_reduced]);
+    standalones.push(['Present',stem,'Habitual',reduplicated_stem/* + '<br> ' + stem + ' ' + post_reduced*/]);
     //preterite and imperfect
-    standalones.push(['Preterite',stem + 'o','Imperfect',reduplicated_stem + 'o' + '<br>' + stem + 'o ' + post_reduced]);
+    standalones.push(['Preterite',stem + 'o','Imperfect',reduplicated_stem + 'o'/* + '<br>' + stem + 'o ' + post_reduced*/]);
     //future and habitual future
-    standalones.push(['Future',future_stem,'H. Future',reduplicated_future + '<br>' + future_stem + ' ' + post_reduced]);
+    standalones.push(['Future',future_stem,'H. Future',reduplicated_future/* + '<br>' + future_stem + ' ' + post_reduced*/]);
     //conditional and habitual conditional
-    standalones.push(['Conditional',future_stem+'o','H. Conditional',reduplicated_future+'o' + '<br>' + future_stem+'o '+post_reduced]);
+    standalones.push(['Conditional',future_stem+'o','H. Conditional',reduplicated_future+'o'/* + '<br>' + future_stem+'o '+post_reduced*/]);
 
-    return make_table('Stand-alone forms', standalones);
+    for(row of standalones){
+        for(let i in row){
+            if(i%2 != 0){
+                row[i] = row[i] + '<br> <em class="normalFont">/' + getPronunciation(row[i]) + '/</em>';
+            }
+        }
+    }
+
+    return make_table('Stand-alone forms (Meso-reduplicated)', standalones);
 }
