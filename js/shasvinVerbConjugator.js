@@ -90,16 +90,17 @@ function is_vowel(c){
     return is_in(c,['a','e','i','o','u']);
 }
 function is_in(c, array){
-    for(let i of array) if(c == i) return true;
-    return false;
+    return array.includes(c);
 }
 //gets the post reduced form of a verb from its stem
 function get_post_reduced_form(stem){
-    let size = Math.min(stem.length,4);
-    let new_str = stem.slice(-size);
+    let new_str = stem;
+    if(stem.length > 4) new_str = stem.slice(-4);
+    let reversedStem = new_str.split('').reverse().join('');
+    
     let count = 0;
     let found = false;
-    let reversedStem = new_str.split('').reverse().join('');
+    
     //read backwars until a second vowel is found
     for(let c of reversedStem){
         if(is_vowel(c) && !found) found = true;
@@ -107,18 +108,18 @@ function get_post_reduced_form(stem){
         count += 1;
     }
     //select the right substring with only one vowel
-    let one_vowel = new_str.slice(-count);
+    new_str = new_str.slice(-count);
     //devoice start if needed
-    if(is_in(one_vowel.charAt(0),['b','d','g'])){
-        one_vowel = unvoiced_equivalents[one_vowel.charAt(0)] + one_vowel.slice(1);
+    if(is_in(new_str.charAt(0),['b','d','g'])){
+        new_str = unvoiced_equivalents[new_str.charAt(0)] + new_str.slice(1);
     }
-    if (one_vowel.length < 1) return ""
-    let req_len = 3;
-    //if there is a second consonant on offset make length 4
-    if(is_vowel(!one_vowel[one_vowel.length-1])) req_len += 1;
-    //if the second cosnonant isnt allowed in second onset position, slice it
-    if(one_vowel.length == req_len && is_in(one_vowel[1],['w','j','l','r','f'])) return one_vowel.slice(1);
-    return one_vowel;
+    if (new_str.length < 2) return new_str;
+    let req_len = 2;
+    //if it ends in a consonant make length longer
+    if(!is_vowel(new_str[new_str.length-1])) req_len += 1;
+    //if there is a second acceptable consonant on offset make length longer
+    if(is_in(new_str[1],['w','j','l','r','f'])) req_len += 1;
+    return new_str.slice(-req_len);
 }
 //returns the stem with the infix -o- applied and updates the subgroup
 //to trick the rest of the code to apply the correct suffix

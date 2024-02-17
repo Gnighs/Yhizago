@@ -93,7 +93,7 @@ var rules = [
     ";{P,m}/m/_m",
     ";{P,m}//_ɲ",
     ";Nasal vowel diphthongization",
-    "N/Nj̃/_V",
+    "N/Nj̃/_{V,N}",
     "i//Nj̃_",
     ";Denasalization",
     "Nj̃/V:j",

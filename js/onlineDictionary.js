@@ -34,11 +34,11 @@ function displayWord(){
         document.getElementById("verbTables").innerHTML = "";
         document.getElementById("conjugationButton").style.display = "none";
      }
-     if(dictionary[word][3].includes("n.")){
+     if(dictionary[word][3] == "n."){
         document.getElementById("reduplicatedForm").innerHTML = "<strong>Reduplicated form: </strong>" + getReduplicatedForm(word,dictionary[word][2]);
      }
      else{
-        document.getElementById("reduplicatedForm").innerHTML = "<strong>Reduplicated form: none</strong>";
+        document.getElementById("reduplicatedForm").innerHTML = "";
      }
     // document.getElementById("reduplicatedForm").innerHTML = "<strong>Reduplicated form: none</strong>";
 }
@@ -62,14 +62,25 @@ var nasalCounterparts = {
 function getReduplicatedForm(word, pronunciation){
     let lastLetter = word[word.length-1];
     if(['a','e','i','o','u'].includes(lastLetter)){
-        return "WIP";
+        let lastOnset = get_post_reduced_form(word)[0];
+        if(['a','e','i','o','u'].includes(lastOnset)) return word + ' <em class="normalFont">/' + pronunciation + '/</em>';
+        let plural = word + lastOnset;
+        if(word[word.length-1] == 'e'){
+            plural = word.slice(0,-1) + 'a' + lastOnset;
+            return plural + ' <em class="normalFont">/' + pronunciation + getPronunciation(plural).slice(-2) + '/</em>';
+        }
+        let newP = getPronunciation(plural);
+        if(['a','e','i','o','u',"ə","ɛ","ɪ","ɔ","ʊ","ã","ẽ","ĩ","õ","ũ"].includes(newP[newP.length-1])
+            && pronunciation[pronunciation.length-1] != 'j'){
+                return plural + ' <em class="normalFont">/' + pronunciation.slice(0,-1) + getPronunciation(plural).slice(-1) + '/</em>';
+        }
+        return plural + ' <em class="normalFont">/' + pronunciation.slice(0,-1) + getPronunciation(plural).slice(-2) + '/</em>';
     }
     else{
         if(lastLetter == 't') return word + 'je <em class="normalFont">/' + pronunciation.slice(0,-1) + 't͡s/</em>';
         else if(lastLetter == 'k') return word += 'je <em class="normalFont">/' + pronunciation.slice(0,-1) + 't͡ʃ/</em>';
         else if(lastLetter == 'p') return word += 'pe <em class="normalFont">/' + pronunciation.slice(0,-1) + 'ɸ/</em>';
         else if(['m','n','s', 'r', 'l', 'j', 'w'].includes(lastLetter)){
-
             let plural = word + word[word.length-2];
             if(lastLetter == 's' || lastLetter == 'r') return plural + ' <em class="normalFont">/' + pronunciation.slice(0,-1) + 'r/</em>';
             if(lastLetter == 'l'){
@@ -82,6 +93,12 @@ function getReduplicatedForm(word, pronunciation){
             } 
             if(lastLetter == 'j') return plural + ' <em class="normalFont">/' + pronunciation.slice(0,-1) + 'j/</em>';
             if(lastLetter == 'w') return plural + ' <em class="normalFont">/' + pronunciation.slice(0,-1) + 'ɸ/</em>';
+            if(lastLetter == 'm'){
+                let toChop = -2;
+                if(pronunciation[pronunciation.length-1] == 'ũ') toChop = -1;
+                return plural + ' <em class="normalFont">/' + 
+                pronunciation.slice(0,toChop) + nasalCounterparts[pronunciation[pronunciation.length+toChop]] + 'm/</em>';
+            }
             if(lastLetter == 'n'){
                 return plural + ' <em class="normalFont">/' + 
                 pronunciation.slice(0,-1) + nasalCounterparts[pronunciation[pronunciation.length-1]] + 'n/</em>';
