@@ -491,4 +491,4 @@ function logChange(before, after) {
 }
 
 
-console.log(getPronunciation("ahakhake hak"));
+//console.log(getPronunciation("ahakhake hak"));

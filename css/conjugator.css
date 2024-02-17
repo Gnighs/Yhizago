@@ -74,6 +74,9 @@
   .verbTables em{
     font-style: normal;
   }
+  p .normalFont {
+    font-style: normal;
+  }
 
   @media(max-width: 767px) {
     .table-pair {
