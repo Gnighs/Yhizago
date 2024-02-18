@@ -93,7 +93,7 @@ function is_in(c, array){
     return array.includes(c);
 }
 //gets the post reduced form of a verb from its stem
-function get_post_reduced_form(stem){
+function get_post_reduced_form(stem, devoiceStart = true){
     let new_str = stem;
     if(stem.length > 4) new_str = stem.slice(-4);
     let reversedStem = new_str.split('').reverse().join('');
@@ -110,7 +110,7 @@ function get_post_reduced_form(stem){
     //select the right substring with only one vowel
     new_str = new_str.slice(-count);
     //devoice start if needed
-    if(is_in(new_str.charAt(0),['b','d','g'])){
+    if(devoiceStart && is_in(new_str.charAt(0),['b','d','g'])){
         new_str = unvoiced_equivalents[new_str.charAt(0)] + new_str.slice(1);
     }
     if (new_str.length < 2) return new_str;

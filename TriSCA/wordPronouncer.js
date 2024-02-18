@@ -6,11 +6,15 @@ window.logChanges = false;
 window.lastRules = undefined;
 window.lastPRules = undefined;
 
+function getPronunciation(input){
+	return getAnyPronunciation(input,StandardRules);
+}
+
 /*
  * This is called whenever the "Apply" button is pressed. It gathers the contents of each input element, parses the 
  * rules, and then applies the rules to the input words to generate the output.
  */
-function getPronunciation(input) {
+function getAnyPronunciation(input,rulesToApply) {
 	// Get data from each input element
 	/*window.debug = document.getElementById("enable-debug").checked;
 	window.logChanges = document.getElementById("log-changes").checked;
@@ -41,12 +45,12 @@ function getPronunciation(input) {
 	let pRules = window.lastPRules;
 	if(
 		window.lastRules == undefined // first run
-		|| rules.length != lastRules.length  // raw rule lists don't match in length
-		|| !rules.every((val, index) => val === window.lastRules[index]) // raw rule lists aren't equal
+		|| rulesToApply.length != lastRules.length  // raw rule lists don't match in length
+		|| !rulesToApply.every((val, index) => val === window.lastRules[index]) // raw rule lists aren't equal
 	) {
 		// Rules need to be parsed again
-		window.lastRules = rules;
-		pRules = parseRules(rules);
+		window.lastRules = rulesToApply;
+		pRules = parseRules(rulesToApply);
 		log(pRules);
 		log("New rules parsed");
 

@@ -64,7 +64,7 @@
         </div>
     </section>
     <section class="plain-text">
-        <p>
+        <!--p>
             This is a Shasvin-English etymological dictionary. You can look up the meanings of Shasvin words by typing them
             into the search bar. It should automatically suggest autocompletion options for words similar to what you are looking for.
             If no options pop up, then there is no word starting with the letters you have typed in.
@@ -75,7 +75,7 @@
             <br><strong>Note:</strong> Only meso-reduplicated forms of verbs are provided. The post-reduced form is shown separatedly so
             you can make the post-reduplicated froms yourself from the perfective conjugations. There might also be some errors in the pronunciation
             of the verb forms, contrast them with the pronunciation of the infinitive, especially for the vowels.
-        </p>
+        </p-->
         <br>
         <!--section id="toLoad" style="display: none;"-->
         <section>
@@ -89,13 +89,14 @@
             <p id="lahapek"></p>
             <p id="ippek"></p>
             <p id="ipa" class="normalFont"></p>
+            <!--p id="LasailtiIpa" class="normalFont"></p-->
             <!--p id="wordClass"></p-->
             <p id="etymology" class="etymology"></p>
-            <br><p id="reduplicatedForm"></p>
             <p id="meaning"></p>
-            <button id="conjugationButton" style="display: none;">Show conjugations</button>
+            <button id="conjugationButton" style="display: none;">Show all forms</button>
             <section id="verbConjugationDropDown" style="display: none;">
                 <h1 id="VerbAndGroup"></h1>
+                <p id="reduplicatedForm"></p>
                 <div id="verbTables" class="verbTables"></div>
             </section>
             
@@ -126,10 +127,10 @@
             // Toggle the display property of the div between "block" and "none"
             if (verbTablesDiv.style.display === "none") {
                 verbTablesDiv.style.display = "block";
-                toggleButton.innerHTML = "Hide conjugations";
+                toggleButton.innerHTML = "Hide forms";
             } else {
                 verbTablesDiv.style.display = "none";
-                toggleButton.innerHTML = "Show conjugations";
+                toggleButton.innerHTML = "Show all forms";
             }
         });
     </script>
