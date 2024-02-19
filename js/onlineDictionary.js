@@ -36,7 +36,7 @@ function displayWord(){
         document.getElementById("conjugationButton").style.display = "none";
      }
      if(dictionary[word][3] == "n."){
-        document.getElementById("reduplicatedForm").innerHTML = "<strong>Reduplicated form: </strong>" + getReduplicatedForm(word,dictionary[word][2]);
+        document.getElementById("reduplicatedForm").innerHTML = "<strong>Indefinite form: </strong>" + getReduplicatedForm(word,dictionary[word][2]);
      }
      else{
         document.getElementById("reduplicatedForm").innerHTML = "";
